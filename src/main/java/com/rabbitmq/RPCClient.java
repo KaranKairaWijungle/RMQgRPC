@@ -51,6 +51,7 @@ public class RPCClient implements AutoCloseable {
 
         channel.basicPublish("", requestQueueName, props,message.getBytes("UTF-8"));
         System.out.println("request published ");
+        // Donot consume immeditately -> this makes gRPC async
 //        final BlockingQueue<String> response = new ArrayBlockingQueue<>(1);
 //
 //        String ctag = channel.basicConsume(replyQueueName, true, (consumerTag, delivery) -> {
